@@ -5,7 +5,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
@@ -21,7 +21,7 @@ public class IssuesTests {
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         open(Constants.REPO);
-        $("#issues-tab").should(exist);
+        $("#issues-tab").shouldBe(visible);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class IssuesTests {
     void checkIssuesTabExistsLambdaSteps() {
         step("Open GitHub Repository", () -> open(Constants.REPO));
 
-        step("Verify Issues Tab exists", () -> $("#issues-tab").should(exist));
+        step("Verify Issues Tab exists", () -> $("#issues-tab").shouldBe(visible));
     }
 
     @Test
