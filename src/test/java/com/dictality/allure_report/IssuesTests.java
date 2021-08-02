@@ -23,4 +23,16 @@ public class IssuesTests {
         open(Constants.REPO);
         $("#issues-tab").should(exist);
     }
+
+    @Test
+    @DisplayName("Check Issues Tab Exists with Allure Lambda Steps")
+    void checkIssuesTabExistsLambdaSteps() {
+        step("Open GitHub Repository", () -> {
+            open(Constants.REPO);
+        });
+
+        step("Verify Issues Tab exists", () -> {
+            $("#issues-tab").should(exist);
+        });
+    }
 }
