@@ -27,12 +27,15 @@ public class IssuesTests {
     @Test
     @DisplayName("Check Issues Tab Exists with Allure Lambda Steps")
     void checkIssuesTabExistsLambdaSteps() {
-        step("Open GitHub Repository", () -> {
-            open(Constants.REPO);
-        });
+        step("Open GitHub Repository", () -> open(Constants.REPO));
 
-        step("Verify Issues Tab exists", () -> {
-            $("#issues-tab").should(exist);
-        });
+        step("Verify Issues Tab exists", () -> $("#issues-tab").should(exist));
+    }
+
+    @Test
+    @DisplayName("Check Issues Tab Exists with Allure Web Steps")
+    void checkIssuesTabExistsWebSteps() {
+        steps.openRepoPage(Constants.REPO);
+        steps.verifyIssuesTabExists();
     }
 }
